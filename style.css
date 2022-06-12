@@ -115,12 +115,12 @@ button {
   color: #fff;
 }
 
-.zero {
+.number-0 {
   text-align: start;
   border-radius: 50px;
   /* padding: 10px; */
 }
 
-.zero div {
+.number-0 div {
   padding-left: 2.6rem;
 }
