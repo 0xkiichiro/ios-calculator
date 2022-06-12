@@ -24,6 +24,22 @@ body {
   border-radius: 3rem;
 }
 
+.previous-result {
+  color: rgb(189, 186, 186);
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.current-result {
+  color: white;
+  font-size: 4rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .row {
   height: 100px;
   display: flex;
