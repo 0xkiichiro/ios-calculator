@@ -9,7 +9,7 @@ document
   .querySelector(".calculator-body")
   .addEventListener("click", (event) => {
     if (event.target.classList.contains("num")) {
-      render(event.target);
+      renderNumber(event.target);
     } else if (event.target.classList.contains("operator")) {
       selectOperation(event.target);
     }
@@ -19,7 +19,7 @@ document
 
 const calculate = () => {};
 
-const render = (num) => {
+const renderNumber = (num) => {
   currResult.innerText += num.innerText;
 };
 
