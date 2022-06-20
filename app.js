@@ -3,15 +3,22 @@
 const currResult = document.querySelector(".current-result");
 const prevResult = document.querySelector(".previous-result");
 
+let currOperand = "";
+let prevOperand = "";
+
 //! click capture
 
 document
   .querySelector(".calculator-body")
   .addEventListener("click", (event) => {
     if (event.target.classList.contains("num")) {
-      renderNumber(event.target);
-    } else if (event.target.classList.contains("operator")) {
-      selectOperation(event.target);
+      appendNumber(event.target.textContent);
+      updateDisplay();
+    }
+
+    if (event.target.classList.contains("operator")) {
+      selectOperation(event.target.textContent);
+      updateDisplay();
     }
   });
 
@@ -19,8 +26,17 @@ document
 
 const calculate = () => {};
 
-const renderNumber = (num) => {
-  currResult.innerText += num.innerText;
+const appendNumber = (num) => {
+  if (currOperand.includes(".") && num === ".") return;
+  if (!currOperand && num === "0") return;
+  if (currOperand.length > 10) return;
+  currOperand += num;
 };
 
-const selectOperation = (operator) => {};
+const updateDisplay = () => {
+  currResult.textContent = currOperand;
+};
+
+const selectOperation = (operator) => {
+  console.log(operator);
+};
