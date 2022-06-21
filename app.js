@@ -5,6 +5,7 @@ const prevResult = document.querySelector(".previous-result");
 
 let currOperand = "";
 let prevOperand = "";
+let operation = "";
 
 //! click capture
 
@@ -24,7 +25,29 @@ document
 
 //! functions
 
-const calculate = () => {};
+const calculate = () => {
+  const prev = Number(prevOperand);
+  const curr = Number(currOperand);
+  let result = 0;
+
+  switch (operation) {
+    case "+":
+      result = prev + curr;
+      break;
+    case "-":
+      result = prev - curr;
+      break;
+    case "x":
+      result = prev * curr;
+      break;
+    case "÷":
+      result = prev / curr;
+      break;
+    default:
+      break;
+  }
+  currOperand = result;
+};
 
 const appendNumber = (num) => {
   if (currOperand.includes(".") && num === ".") return;
@@ -35,8 +58,14 @@ const appendNumber = (num) => {
 
 const updateDisplay = () => {
   currResult.textContent = currOperand;
+  prevResult.textContent = `${prevOperand} ${operation}`;
 };
 
 const selectOperation = (operator) => {
-  console.log(operator);
+  if (prevOperand) {
+    calculate();
+  }
+  operation = operator;
+  prevOperand = currOperand;
+  currOperand = "";
 };
