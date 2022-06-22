@@ -21,6 +21,11 @@ document
       selectOperation(event.target.textContent);
       updateDisplay();
     }
+
+    if (event.target.classList.contains("equal")) {
+      calculate();
+      updateDisplay();
+    }
   });
 
 //! functions
@@ -47,11 +52,22 @@ const calculate = () => {
       break;
   }
   currOperand = result;
+  prevOperand = "";
+  operation = "";
 };
 
 const appendNumber = (num) => {
+  //* return if first numb is 0 and we are trying to add 0 again
+  if (currOperand === "0" && num === "0") return;
+  //* return if fitst numb is 0 and we try printing another after
+  if (currOperand === "0" && num !== ".") {
+    currOperand = num;
+    console.log(currOperand);
+    return;
+  }
+  //* return if there is . used already
   if (currOperand.includes(".") && num === ".") return;
-  if (!currOperand && num === "0") return;
+  //* stop overflow of display
   if (currOperand.length > 10) return;
   currOperand += num;
 };
